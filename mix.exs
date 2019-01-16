@@ -60,7 +60,8 @@ defmodule FunWithFlags.Mixfile do
       {:mock, "~> 0.2", only: :test},
 
       {:redix, "~> 0.6", optional: true},
-      {:ecto, "~> 2.1", optional: true},
+      {:ecto_sql, "~> 3.0", optional: true},
+      {:ecto, "~> 3.0", optional: true},
       {:postgrex, "~> 0.13", optional: true, only: [:dev, :test]},
 
       {:redix_pubsub, "~> 0.4", optional: true},
