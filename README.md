@@ -498,7 +498,7 @@ config :fun_with_flags, :cache_bust_notifications,
   [enabled: true, adapter: FunWithFlags.Notifications.Redis]
 
 # Notifications can also be disabled, which will also remove the Redis/Redix dependency
-config :fun_with_flags, :cache_bust_notifications, [enabled: false]  
+config :fun_with_flags, :cache_bust_notifications, [enabled: false]
 ```
 
 When using Redis for persistence and/or cache-busting PubSub it is necessary to configure the connection to the Redis instance. These options can be omitted if Redis is not being used. For example, the defaults:
@@ -555,7 +555,7 @@ The library comes with two PubSub adapters for the [`Redix.PubSub`](https://hex.
 
 The Redis PubSub adapter is the default and doesn't need to be excplicity configured. It can only be used in conjunction with the Redis persistence adapter however, and is not available when using Ecto for persistence. When used, it connects directly to the Redis instance used for persisting the the flag data.
 
-The Phoenix PubSub adapter uses the high level API of `Phoenix.PubSub`, which means that under the hood it could use either its PG2 or Redis adapters, and this library doesn't need to know. It's provided as a convenient way to leverage distributed Erlang when using FunWithFlags in a Phoenix application, although it can be used independently (without the rest of the Phoenix framework) to add PubSub to Elixir apps running on Erlang clusters.  
+The Phoenix PubSub adapter uses the high level API of `Phoenix.PubSub`, which means that under the hood it could use either its PG2 or Redis adapters, and this library doesn't need to know. It's provided as a convenient way to leverage distributed Erlang when using FunWithFlags in a Phoenix application, although it can be used independently (without the rest of the Phoenix framework) to add PubSub to Elixir apps running on Erlang clusters.
 FunWithFlags expects the `Phoenix.PubSub` process to be started by the host application, and in order to use this adapter the client (name or PID) must be provided in the configuration.
 
 For example, in Phoenix it would be:
@@ -599,7 +599,7 @@ def deps do
     # either:
     {:redix, "~> 0.6"},
     # or:
-    {:ecto, "~> 2.1"},
+    {:ecto, "~> 3.0"},
 
     # either:
     {:redix_pubsub, "~> 0.4"}, # depends on :redix
@@ -632,7 +632,7 @@ The `test.all` task will run the test suite multiple times with different config
 
 ### Configuration changes have no effect in `MIX_ENV=dev`
 
-**Issue**: changing the library settings in the host application's Mix config file has no effect, or "missing process" exceptions are raised when booting. This should only be an issue in the development environment.  
+**Issue**: changing the library settings in the host application's Mix config file has no effect, or "missing process" exceptions are raised when booting. This should only be an issue in the development environment.
 **Solution**: clear the compiled BEAM bytecode with:
 
 ```shell
